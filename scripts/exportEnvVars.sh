@@ -1,7 +1,7 @@
-export ONPREM_SUFFIX=192.168.99.100.nip.io
-export AWS_SUFFIX=13.56.49.163.nip.io
-export GCP_SUFFIX=35.230.115.194.nip.io
-export AZURE_SUFFIX=40.78.82.99.nip.io
+export ONPREM_SUFFIX=$(minishift ip).nip.io
+export AWS_SUFFIX=amazon.com
+export GCP_SUFFIX=35.244.14.24.nip.io
+export AZURE_SUFFIX=azure.com
 echo $ONPREM_SUFFIX
 echo $AWS_SUFFIX
 echo $GCP_SUFFIX

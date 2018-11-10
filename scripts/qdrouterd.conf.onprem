@@ -56,15 +56,15 @@ listener {
     httpRootDir: /usr/share/qpid-dispatch/console/
 }
 
-# connector {
-#     host: inter-router-demo2-amq.${AWS_SUFFIX}
-#     port: 443
-#     role: inter-router
-#     sslProfile: TLS
-#     saslMechanisms: EXTERNAL
-#     verifyHostName: no
-#     cost: 5
-# }
+connector {
+    host: inter-router-demo2-amq.${AWS_SUFFIX}
+    port: 443
+    role: inter-router
+    sslProfile: TLS
+    saslMechanisms: EXTERNAL
+    verifyHostName: no
+    cost: 5
+}
 
 
 connector {

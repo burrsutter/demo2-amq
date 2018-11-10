@@ -1,4 +1,5 @@
 ./setup-common
+while oc get pods | grep -v -E "(Running|Completed|STATUS)"; do sleep 5; done
 ./setup-onprem-ic-only
 oc apply -f workload.yaml
 oc apply -f ../frontend/.openshiftio/application.yaml
@@ -6,11 +7,11 @@ oc new-app --template=vertx-messaging-frontend \
   -p SOURCE_REPOSITORY_URL=https://github.com/kameshsampath/demo2-amq \
   -p SOURCE_REPOSITORY_REF=master \
   -p SOURCE_REPOSITORY_DIR=frontend \
-  --build-env MAVEN_MIRROR_URL=http://nexus.default:8081/nexus/content/groups/public
+  --build-env MAVEN_MIRROR_URL=http://nexus:8081/nexus/content/groups/public
 oc apply -f ../worker/.openshiftio/application.yaml
 oc new-app --template=vertx-messaging-worker \
   -p SOURCE_REPOSITORY_URL=https://github.com/kameshsampath/demo2-amq \
   -p SOURCE_REPOSITORY_REF=master \
   -p SOURCE_REPOSITORY_DIR=worker \
-  --build-env MAVEN_MIRROR_URL=http://nexus.default:8081/nexus/content/groups/public
+  --build-env MAVEN_MIRROR_URL=http://nexus:8081/nexus/content/groups/public
 

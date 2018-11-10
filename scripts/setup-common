@@ -1,18 +1,19 @@
-oc new-app sonatype/nexus -n default
-oc expose svc/nexus -n default
-oc set probe dc/nexus -n default \
+! oc new-project demo2-amq
+oc new-app sonatype/nexus -n demo2-amq
+oc expose svc/nexus -n demo2-amq
+oc set probe dc/nexus -n demo2-amq \
 	--liveness \
 	--failure-threshold 3 \
 	--initial-delay-seconds 30 \
 	-- echo ok
-oc set probe dc/nexus -n default \
+oc set probe dc/nexus -n demo2-amq \
 	--readiness \
 	--failure-threshold 3 \
 	--initial-delay-seconds 30 \
 	--get-url=http://:8081/nexus/content/groups/public
 
 # TODO a pvc may be a good option for persistence
-# oc volumes dc/nexus -n default --add \
+# oc volumes dc/nexus -n demo2-amq --add \
 # 	--name 'nexus-volume-1' \
 # 	--type 'pvc' \
 # 	--mount-path '/sonatype-work/' \

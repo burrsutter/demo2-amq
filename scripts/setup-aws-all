@@ -1,5 +1,5 @@
 ./setup-common
-while oc get pods | grep -v -E "(Running|Completed|STATUS)"; do sleep 5; done
+while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://nexus-demo2-amq.${AWS_SUFFIX}/nexus/content/groups/public/)" != "200" ]]; do sleep 5; done
 ./setup-aws-ic-only
 oc apply -f workload.yaml
 oc apply -f ../worker/.openshiftio/application.yaml

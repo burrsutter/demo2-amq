@@ -1,5 +1,5 @@
 ./setup-common
-sleep 180
+while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://nexus-demo2-amq.${AZURE_SUFFIX}/nexus/content/groups/public/)" != "200" ]]; do sleep 5; done
 ./setup-azure-ic-only
 oc apply -f workload.yaml
 oc apply -f ../worker/.openshiftio/application.yaml

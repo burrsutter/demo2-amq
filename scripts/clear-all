@@ -1,0 +1,6 @@
+oc delete all  --selector app=vertx-messaging-worker -n demo2-amq
+oc delete all  --selector app=workload-generator -n demo2-amq
+oc delete all  --selector app=amq-interconnect -n demo2-amq
+oc delete secrets  all -n demo2-amq
+oc delete configmap all -n demo2-amq
+

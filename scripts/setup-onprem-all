@@ -1,5 +1,5 @@
 ./setup-common
-while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://nexus-demo2-amq.apps.${ONPREM_SUFFIX}/nexus/content/groups/public/)" != "200" ]]; do sleep 5; done
+while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://nexus-demo2-amq.${ONPREM_SUFFIX}/nexus/content/groups/public/)" != "200" ]]; do sleep 5; done
 ./setup-onprem-ic-only
 oc apply -f workload.yaml
 oc apply -f ../frontend/.openshiftio/application.yaml

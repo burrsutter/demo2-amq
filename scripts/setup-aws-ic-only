@@ -1,4 +1,4 @@
-oc new-project demo2-amq
+! oc new-project demo2-amq
 oc create secret generic qdr-internal-cert --from-file=tls.crt=tls-certs/tls.aws.crt --from-file=tls.key=tls-certs/tls.aws.key --from-file=ca.crt=tls-certs/ca.crt --from-file=tls.pw=tls-certs/tls.aws.pw
 oc create configmap qdr-config --from-file=qdrouterd.conf.template=qdrouterd.conf.public_cloud --dry-run -o yaml | oc apply -f -
 cat ic.aws.yaml | envsubst | oc apply -f -

@@ -1,8 +1,11 @@
+./setup-common
+while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://nexus-demo2-amq.${AZURE_SUFFIX}/nexus/content/groups/public/)" != "200" ]]; do sleep 5; done
 ./setup-azure-ic-only
 oc apply -f workload.yaml
 oc apply -f ../worker/.openshiftio/application.yaml
 oc new-app --template=vertx-messaging-worker \
-  -p SOURCE_REPOSITORY_URL=https://github.com/burrsutter/demo2-amq \
+  -p SOURCE_REPOSITORY_URL=https://github.com/kameshsampath/demo2-amq \
   -p SOURCE_REPOSITORY_REF=master \
-  -p SOURCE_REPOSITORY_DIR=worker
+  -p SOURCE_REPOSITORY_DIR=worker \
+  --build-env MAVEN_MIRROR_URL=http://nexus:8081/nexus/content/groups/public
 

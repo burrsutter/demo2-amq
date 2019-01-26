@@ -133,7 +133,7 @@ objects:
               fieldRef:
                 fieldPath: metadata.namespace
           - name: AMQ_LOCATION_KEY
-            value: BURR      
+            value: ONPREM      
           readinessProbe:
             httpGet:
               path: /

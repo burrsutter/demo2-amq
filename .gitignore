@@ -113,4 +113,5 @@ scripts/tls-certs
 .classpath
 .DS_Store
 .vscode
-/scripts/demo
+**/scripts/demo
+**/exportEnvVars.sh

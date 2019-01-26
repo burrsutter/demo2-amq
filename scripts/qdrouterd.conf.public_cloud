@@ -14,7 +14,7 @@ listener {
     host: 0.0.0.0
     port: 55672
     role: inter-router
-    authenticatePeer: yes
+    authenticatePeer: no
     sslProfile: ssl_internal_details
     saslMechanisms: EXTERNAL
 }
